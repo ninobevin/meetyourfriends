@@ -128,12 +128,12 @@ export default function MeetupPage() {
           <div className="flex-1 overflow-y-auto space-y-4 mb-4">
             {messages.map((msg) => (
               <div key={msg.id} className="flex items-start gap-2">
-                <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
+                <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700">
                   {msg.sender_name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-medium text-sm text-gray-600">{msg.sender_name}</p>
-                  <p className="bg-gray-100 rounded-lg p-2 mt-1">{msg.content}</p>
+                  <p className="font-medium text-sm text-gray-900">{msg.sender_name}</p>
+                  <p className="bg-gray-100 rounded-lg p-2 mt-1 text-gray-900">{msg.content}</p>
                 </div>
               </div>
             ))}
