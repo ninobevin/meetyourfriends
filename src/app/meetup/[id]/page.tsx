@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 // Dynamically import the map component to avoid SSR issues
 const MapComponent = dynamic(
@@ -30,8 +31,15 @@ interface Location {
   updated_at: string;
 }
 
+interface Session {
+  id: string;
+  name: string;
+  created_at: string;
+}
+
 export default function MeetupPage() {
   const params = useParams();
+  const [session, setSession] = useState<Session | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [participants, setParticipants] = useState<Location[]>([]);
@@ -55,6 +63,21 @@ export default function MeetupPage() {
       return () => navigator.geolocation.clearWatch(watchId);
     }
   }, []);
+
+  // Fetch session details
+  useEffect(() => {
+    const fetchSession = async () => {
+      try {
+        const response = await fetch(`/api/sessions?sessionId=${params.id}`);
+        if (!response.ok) throw new Error('Failed to fetch session');
+        const data = await response.json();
+        setSession(data.session);
+      } catch (error) {
+        console.error('Error fetching session:', error);
+      }
+    };
+    fetchSession();
+  }, [params.id]);
 
   // Fetch messages periodically
   useEffect(() => {
@@ -103,10 +126,34 @@ export default function MeetupPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* Map Section */}
-        <div className="bg-white rounded-xl shadow-lg p-4">
-          <h2 className="text-xl font-semibold mb-4">Participant Locations</h2>
+      <div className="max-w-6xl mx-auto">
+        <Link
+          href="/"
+          className="inline-flex items-center mb-4 text-blue-600 hover:text-blue-700 transition-colors"
+        >
+          <svg
+            className="w-4 h-4 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+          Back to Home
+        </Link>
+        
+        <h1 className="text-2xl font-bold mb-6">Session: {session?.name || params.id}</h1>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* Map Section */}
+          <div className="bg-white rounded-xl shadow-lg p-4">
+            <h2 className="text-xl font-semibold mb-4">Participant Locations</h2>
           <MapComponent 
             participants={participants.map(p => ({
               id: p.participant_id,
