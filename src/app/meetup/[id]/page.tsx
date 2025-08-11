@@ -132,8 +132,8 @@ export default function MeetupPage() {
                   {msg.sender_name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-medium text-sm text-gray-900">{msg.sender_name}</p>
-                  <p className="bg-gray-100 rounded-lg p-2 mt-1 text-gray-900">{msg.content}</p>
+                  <p className="font-medium text-sm text-black">{msg.sender_name}</p>
+                  <p className="bg-gray-100 rounded-lg p-2 mt-1 text-black">{msg.content}</p>
                 </div>
               </div>
             ))}

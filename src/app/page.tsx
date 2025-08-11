@@ -53,8 +53,8 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
             Meet Your Friends
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-            Connect with friends in real-time and make meetups easier than ever
+                    <p className="mt-4 text-lg md:text-xl text-black max-w-2xl mx-auto">
+            Welcome to Meet Your Friends, a simple way to coordinate meetups with your friends in real-time.
           </p>
         </div>
 
@@ -68,7 +68,7 @@ export default function Home() {
                 value={meetupName}
                 onChange={(e) => setMeetupName(e.target.value)}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-black placeholder-black disabled:bg-gray-100 disabled:cursor-not-allowed"
               />
               {error && (
                 <p className="text-red-500 text-sm">{error}</p>
@@ -117,7 +117,7 @@ export default function Home() {
               />
             </div>
             <h3 className="text-xl font-semibold mb-2">Real-time Location</h3>
-            <p className="text-gray-600">Share your location and see where your friends are instantly</p>
+            <p className="text-black">Share your location and see where your friends are instantly</p>
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-md">
@@ -131,7 +131,7 @@ export default function Home() {
               />
             </div>
             <h3 className="text-xl font-semibold mb-2">Group Chat</h3>
-            <p className="text-gray-600">Chat with your friends and coordinate meetups easily</p>
+            <p className="text-black">Chat with your friends and coordinate meetups easily</p>
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-md">
@@ -145,7 +145,7 @@ export default function Home() {
               />
             </div>
             <h3 className="text-xl font-semibold mb-2">Privacy First</h3>
-            <p className="text-gray-600">Your data is automatically deleted after 24 hours</p>
+            <p className="text-black">Your data is automatically deleted after 24 hours</p>
           </div>
         </div>
       </div>

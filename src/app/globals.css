@@ -27,7 +27,7 @@ body {
 
 /* Leaflet specific styles */
 .leaflet-popup-content {
-  color: #374151; /* text-gray-700 */
+  color: #000000; /* black */
   font-size: 0.875rem; /* text-sm */
 }
 
