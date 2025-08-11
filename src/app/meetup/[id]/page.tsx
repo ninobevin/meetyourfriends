@@ -154,54 +154,55 @@ export default function MeetupPage() {
           {/* Map Section */}
           <div className="bg-white rounded-xl shadow-lg p-4">
             <h2 className="text-xl font-semibold mb-4">Participant Locations</h2>
-          <MapComponent 
-            participants={participants.map(p => ({
-              id: p.participant_id,
-              name: p.participant_name,
-              location: {
-                latitude: p.latitude,
-                longitude: p.longitude
-              }
-            }))}
-            userLocation={userLocation}
-          />
-        </div>
-
-        {/* Chat Section */}
-        <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col h-[600px]">
-          <h2 className="text-xl font-semibold mb-4">Group Chat</h2>
-          
-          {/* Messages List */}
-          <div className="flex-1 overflow-y-auto space-y-4 mb-4">
-            {messages.map((msg) => (
-              <div key={msg.id} className="flex items-start gap-2">
-                <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700">
-                  {msg.sender_name.charAt(0)}
-                </div>
-                <div>
-                  <p className="font-medium text-sm text-black">{msg.sender_name}</p>
-                  <p className="bg-gray-100 rounded-lg p-2 mt-1 text-black">{msg.content}</p>
-                </div>
-              </div>
-            ))}
+            <MapComponent 
+              participants={participants.map(p => ({
+                id: p.participant_id,
+                name: p.participant_name,
+                location: {
+                  latitude: p.latitude,
+                  longitude: p.longitude
+                }
+              }))}
+              userLocation={userLocation}
+            />
           </div>
 
-          {/* Message Input */}
-          <div className="flex gap-2">
-            <input
-              type="text"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-              placeholder="Type your message..."
-              className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black placeholder-black"
-            />
-            <button
-              onClick={sendMessage}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-            >
-              Send
-            </button>
+          {/* Chat Section */}
+          <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col h-[600px]">
+            <h2 className="text-xl font-semibold mb-4">Group Chat</h2>
+            
+            {/* Messages List */}
+            <div className="flex-1 overflow-y-auto space-y-4 mb-4">
+              {messages.map((msg) => (
+                <div key={msg.id} className="flex items-start gap-2">
+                  <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700">
+                    {msg.sender_name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="font-medium text-sm text-black">{msg.sender_name}</p>
+                    <p className="bg-gray-100 rounded-lg p-2 mt-1 text-black">{msg.content}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Message Input */}
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                placeholder="Type your message..."
+                className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black placeholder-black"
+              />
+              <button
+                onClick={sendMessage}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              >
+                Send
+              </button>
+            </div>
           </div>
         </div>
       </div>
