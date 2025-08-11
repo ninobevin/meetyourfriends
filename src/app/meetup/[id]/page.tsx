@@ -153,7 +153,7 @@ export default function MeetupPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Map Section */}
           <div className="bg-white rounded-xl shadow-lg p-4">
-            <h2 className="text-xl font-semibold mb-4">Participant Locations</h2>
+            <h2 className="text-xl text-blue font-semibold mb-4">Participant Locations</h2>
             <MapComponent 
               participants={participants.map(p => ({
                 id: p.participant_id,
@@ -169,7 +169,7 @@ export default function MeetupPage() {
 
           {/* Chat Section */}
           <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col h-[600px]">
-            <h2 className="text-xl font-semibold mb-4">Group Chat</h2>
+            <h2 className="text-xl text-blue font-semibold mb-4">Group Chat</h2>
             
             {/* Messages List */}
             <div className="flex-1 overflow-y-auto space-y-4 mb-4">
